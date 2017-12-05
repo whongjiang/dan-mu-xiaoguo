@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+  html,
+  body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: "微软雅黑";
+    font-size: 62.5%;
+  }
+  
+  .boxDom {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .idDom {
+    width: 100%;
+    height: 100px;
+    background: #666;
+    position: fixed;
+    bottom: 0px;
+  }
+  
+  .content {
+    display: inline-block;
+    width: 430px;
+    height: 40px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+  }
+  
+  .title {
+    display: inline;
+    font-size: 4em;
+    vertical-align: bottom;
+    color: #fff;
+  }
+  
+  .text {
+    border: none;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 2.4em;
+  }
+  
+  .btn {
+    width: 60px;
+    height: 30px;
+    background: #f90000;
+    border: none;
+    color: #fff;
+    font-size: 2.4em;
+  }
+  
+  span {
+    width: 300px;
+    height: 40px;
+    position: absolute;
+    overflow: hidden;
+    color: #000;
+    font-size: 4em;
+    line-height: 1.5em;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <!--<script>
+  $(function () {
+    // 随机生成颜色的函数
+    function getColor() {
+      return Math.floor( Math.random() * 256 );
+    }
+
+    // 1 给发射按钮绑定事件
+    $('#btn').click(function() {
+      // 2 获取到用户输入的内容
+      var txt = $('#text').val();
+
+      // 0 - 400px  随机生成高度的一个区间
+      var spanTop = Math.random() * 400;
+      // 随机生成颜色
+      var color = 
+        'rgb(' + getColor() + ',' + getColor() + ', ' + getColor() + ')';
+
+      // 3 动态创建一个span并设置span 的内容
+      $('<span></span>')        // 创建元素
+        .text( txt )            // 设置文本内容
+        .css('left', 1500)      // 设置样式（水平位置）
+        .css('top', spanTop)    // 设置样式（高度）
+        .css('color', color)    // 设置样式（颜色）
+        .animate({
+          left: -300
+        }, 10000, 'linear')     // 动画效果
+        .appendTo('#boxDom');   // 追加到页面中
+
+
+      // 4 清空文本框
+      $('#text').val('');
+    });
+  });
+  </script>-->
+</head>
+
+<body>
+  <div class="boxDom" id="boxDom">
+    <div class="idDom" id="idDom">
+      <div class="content">
+        <p class="title">吐槽:</p>
+        <input type="text" class="text" id="text" />
+        <input type="button" class="btn" id="btn" value="发射">
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $(function(){
+    // 1 给发射按钮绑定事件
+    $("#btn").click(function(){
+      // 2 获取到用户输入的内容
+      var txt = $('#text').val();
+      // 3 动态创建一个span并设置span 的内容:内容为用户输入的内容
+      // 3.1随机生成0 - 400px高度的一个区间
+      var spanTop = Math.random() * 400;
+      console.log(spanTop)
+      // 3.2随机生成颜色
+      var color =
+        'rgb(' + getColor() + ',' + getColor() + ', ' + getColor() + ')';
+      // 3.2.1随机生成颜色值的函数
+      function getColor() {
+        return Math.floor( Math.random() * 256 );
+      }
+
+      $('<span></span>')        // 创建一个span元素
+        .text( txt )            // 设置文本内容
+        .css('left', 1500)      // 设置样式（水平位置）
+        .css('top', spanTop)    // 设置样式（高度）
+        .css('color', color)    // 设置样式（颜色）
+        .animate({
+          left: -300
+        }, 10000, 'linear')     // 动画效果
+        .appendTo('#boxDom');   // 追加到页面中
+      // 4 清空文本框
+      $('#text').val('');
+    })
+  })
+</script>
+</html>
